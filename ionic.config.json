@@ -1,0 +1,7 @@
+{
+  "name": "All-Health",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
