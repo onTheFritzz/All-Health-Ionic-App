@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'All-Health',
+  appId: 'com.onthefritzz.allhealth',
+  appName: 'All Health',
   webDir: 'dist',
   server: {
     androidScheme: 'https'

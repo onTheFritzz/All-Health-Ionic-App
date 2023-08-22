@@ -77,6 +77,9 @@ http://ionicframework.com/docs/theming/ */
 }
 
 @media (prefers-color-scheme: dark) {
+  ion-tab-bar{
+    --color-selected: #ffc409;
+  }
   /*
    * Dark Colors
    * -------------------------------------------
@@ -197,7 +200,7 @@ http://ionicframework.com/docs/theming/ */
    */
 
   .md body {
-    --ion-background-color: #121212;
+    --ion-background-color: #53504e;
     --ion-background-color-rgb: 18,18,18;
 
     --ion-text-color: #ffffff;
