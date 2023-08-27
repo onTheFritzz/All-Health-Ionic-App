@@ -31,7 +31,7 @@ const FastingCalculator: React.FC = () => {
       if (fastingHours > maxFastTime) {
         fastingMessage = "You're fasting for too long!"
       } else {
-        fastingMessage = "You don't have a time machine!"
+        fastingMessage = "This isn't a time machine!"
       }
       
     } else {
