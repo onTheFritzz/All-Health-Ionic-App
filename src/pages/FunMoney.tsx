@@ -2,22 +2,36 @@ import React from 'react';
 import { IonCard, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonPage, IonRow,
   IonTitle, IonToolbar, IonCardHeader, IonCardContent, IonCardTitle, IonIcon, IonButton,
   IonBackButton, IonButtons } from '@ionic/react';
-import { useStoredState, clearLocalStorage } from '../lib/hooks';
+import { useStoredState } from '../lib/hooks';
 import { refresh } from 'ionicons/icons';
 
 const FunMoney: React.FC = () => {
-  const [hours, setHours] = useStoredState('Hours', '')//useState('');
-  const [wage, setWage] = useStoredState('Wage', '')//useState(24);
-  const [tax, setTax] = useStoredState('Tax', 21)//useState(21)
-  const [housing, setHousing] = useStoredState('Housing', '')//useState(100)
-  const [transportation, setTransportation] = useStoredState('Transportation', '')//useState(180)
-  const [groceries, setGroceries] = useStoredState('Groceries', '')//useState(55)
-  const [utilities, setUtilities] = useStoredState('Utilities', '')//useState(347.50)
-  const [entertainment, setEntertainment] = useStoredState('Entertainment', '')//useState(400)
-  const [insurance, setInsurance] = useStoredState('Insurance', '')//useState(50)
-  const [debt, setDebt] = useStoredState('Debt', '')//useState('')
-  const [misc, setMiscellaneous] = useStoredState('Miscellaneous', '')//useState('')
+  const [hours, setHours] = useStoredState('Wage-Hours', '')
+  const [wage, setWage] = useStoredState('Wage', '')
+  const [tax, setTax] = useStoredState('Tax', 21)
+  const [housing, setHousing] = useStoredState('Housing', '')
+  const [transportation, setTransportation] = useStoredState('Transportation', '')
+  const [groceries, setGroceries] = useStoredState('Groceries', '')
+  const [utilities, setUtilities] = useStoredState('Utilities', '')
+  const [entertainment, setEntertainment] = useStoredState('Entertainment', '')
+  const [insurance, setInsurance] = useStoredState('Insurance', '')
+  const [debt, setDebt] = useStoredState('Debt', '')
+  const [misc, setMiscellaneous] = useStoredState('Miscellaneous', '')
   
+  function resetValues() {
+    setHours('')
+    setWage('')
+    setTax(21)
+    setHousing('')
+    setTransportation('')
+    setGroceries('')
+    setUtilities('')
+    setEntertainment('')
+    setInsurance('')
+    setDebt('')
+    setMiscellaneous('')
+  }
+
   const sumBills = sumAllBills()
   const netMoney = (hours * wage * (1 - tax/100)).toFixed(2)
   const funMoney = (parseFloat(netMoney) - sumBills).toFixed(2)
@@ -129,13 +143,14 @@ const FunMoney: React.FC = () => {
             </IonGrid>
           </IonCardContent>
         </IonCard>
-        <IonButton expand="block" color="warning" onClick={clearLocalStorage}>
+        <IonButton expand="block" color="warning" onClick={resetValues}>
           <IonIcon slot="end" icon={refresh}></IonIcon>Reset Values
         </IonButton>
       </IonContent>
     </IonPage>
   );
 };
+//<IonButton expand="block" color="warning" onClick={clearLocalStorage}>
 // expand="block" color="warning">Reset all Values</IonButton>
 //{bills.map(bill => <IonInput label={bill.name} value={bill.cost} key={bill.name} onIonChange={(bill) => setBills(bill.detail.value)}></IonInput>)}
 //{[{'name': 'xcel', 'cost': 1}, {'name': 'chase', 'cost': 2}, {'name': 'rent', 'cost': 3}].map(title => <p key={title.name}>{title.name}: {title.cost}</p>)}

@@ -12,8 +12,3 @@ export function useStoredState(storageKey, defaultState) {
     }
     return [state, setAndStoreState]
 }
-
-export function clearLocalStorage() {
-    localStorage.clear();
-    location.reload();
-}

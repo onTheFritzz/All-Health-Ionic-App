@@ -4,11 +4,19 @@ import FlipCountdown from '@rumess/react-flip-countdown';
 import { useStoredState } from '../lib/hooks';
 import moment from 'moment';
 
-//{`${moment().add(`${pillDate}`, 'days').format('L').replaceAll('/', '-')}`}
-//{`${date.addDays(`${pillDate}`)}`}
-
 const PillCounter: React.FC = () => {
-  const [pillDate, setPillDate] = useStoredState('Pills', '10')
+  
+  const [pills, setPillQty] = useStoredState('Pills', '0')
+  const [refillDate, setRefillDate] = useStoredState('Pills-Date', '')
+
+  function getRefillDate(pillsQty) {
+    setPillQty(pillsQty)
+
+    let dateModified = new Date()
+    let endDate = moment(dateModified).add(pillsQty, 'days').format('MM-DD-YYYY')
+
+    setRefillDate(endDate)
+  }
 
   return (
     <IonPage>
@@ -23,7 +31,7 @@ const PillCounter: React.FC = () => {
       <IonContent fullscreen>
         <IonCard>
           <IonInput color="warning" label="Pills:" labelPlacement="fixed" fill="solid"
-           value={pillDate} onIonChange={(event) => setPillDate(event.detail.value)}></IonInput>
+            value={pills} onIonChange={(event) => getRefillDate(event.detail.value)}></IonInput>
         </IonCard>
         <IonCard color="warning">
           <IonCardHeader>
@@ -32,7 +40,7 @@ const PillCounter: React.FC = () => {
                   hideYear
                   hideMinute
                   hideHour
-                  endAt={`${moment().add(`${pillDate}`, 'days').format('L').replaceAll('/', '-')}`} // Date/Time
+                  endAt={refillDate}
             />
           </IonCardHeader>
         </IonCard>

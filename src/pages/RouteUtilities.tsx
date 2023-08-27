@@ -1,5 +1,6 @@
 import PillCounter from './PillCounter';
 import FunMoney from './FunMoney';
+import FastingCalculator from './FastingCalculator'
 
 export function getUtilities(category='') {
     const financial = [{
@@ -11,17 +12,25 @@ export function getUtilities(category='') {
         }]
         
     const health = [{
-            id: '2',
+            id: '1',
             title: 'Pill Counter',
             description: 'Display how many days/pills left before requiring a refill',
             routePath: <PillCounter />,
             url: '/pill-counter'
+        },{
+            id: '2',
+            title: 'Fasting Calculator',
+            description: 'Use meal end time to determine when a fast ends',
+            routePath: <FastingCalculator />,
+            url: '/fasting-calculator'
         }]
 
     if (category == 'health') {
         return health
+
     } else if (category == 'financial') {
         return financial
+        
     } else {
         return [...financial, ...health]
     }

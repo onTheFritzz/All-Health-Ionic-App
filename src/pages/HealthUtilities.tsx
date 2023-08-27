@@ -8,7 +8,7 @@ const HealthUtilities: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Health Utilities</IonTitle>
+          <IonTitle color="warning">Health Utilities</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -19,7 +19,7 @@ const HealthUtilities: React.FC = () => {
         </IonHeader>
         <IonList>
             {utilities.map((utility) => 
-                <IonItem button key={utility.id} routerLink={`${utility.url}`}>
+                <IonItem detail={true} button key={utility.id} routerLink={`${utility.url}`}>
                     {utility.title}
                 </IonItem>
             )}
