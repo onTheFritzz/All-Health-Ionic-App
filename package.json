@@ -1,5 +1,6 @@
 {
   "name": "All-Health",
+  "homepage": "http://onTheFritzz.github.io/All-Health-Ionic-App"
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -10,7 +11,9 @@
     "preview": "vite preview",
     "test.e2e": "cypress run",
     "test.unit": "vitest",
-    "lint": "eslint"
+    "lint": "eslint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@capacitor/android": "5.2.2",
