@@ -1,10 +1,11 @@
 import PillCounter from './PillCounter';
 import FunMoney from './FunMoney';
 import FastingCalculator from './FastingCalculator'
+import BloodPressure from './BloodPressure';
 
 export function getUtilities(category='') {
     const financial = [{
-            id: '1',
+            id: 'func',
             title: 'Fun Money Calculator',
             description: 'Calculate how much fun money will be on a paycheck before getting paid.',
             routePath: <FunMoney />,
@@ -12,17 +13,23 @@ export function getUtilities(category='') {
         }]
         
     const health = [{
-            id: '1',
+            id: 'pill',
             title: 'Pill Counter',
             description: 'Display how many days/pills left before requiring a refill',
             routePath: <PillCounter />,
             url: '/pill-counter'
         },{
-            id: '2',
+            id: 'fast',
             title: 'Fasting Calculator',
             description: 'Use meal end time to determine when a fast ends',
             routePath: <FastingCalculator />,
             url: '/fasting-calculator'
+        },{
+            id: 'blud',
+            title: 'Blood Pressure Logger',
+            description: 'A blood pressure logger',
+            routePath: <BloodPressure />,
+            url: '/blood-pressure'
         }]
 
     if (category == 'health') {

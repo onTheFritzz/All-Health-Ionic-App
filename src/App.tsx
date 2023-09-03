@@ -11,11 +11,13 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { heart } from 'ionicons/icons';
+import { cash } from 'ionicons/icons'
+
+// Custom page imports
 import FinancialUtilities from './pages/FinancialUtilities';
 import HealthUtilities from './pages/HealthUtilities';
-//import PillCounter from './pages/PillCounter';
-//import FunMoney from './pages/FunMoney';
 import getUtilities from './pages/RouteUtilities';
+import BloodPressure from './pages/BloodPressure';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,60 +34,48 @@ import '@ionic/react/css/text-alignment.css';
 import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
-import { cash } from 'ionicons/icons'
 
 /* Theme variables */
 import './theme/variables.css';
 
-setupIonicReact();
-
 const utilities = getUtilities()
-console.log(utilities)
 
+setupIonicReact();
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/physical">
-            <HealthUtilities /> 
-          </Route>
-          <Route exact path="/financial">
-           <FinancialUtilities />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/financial/" />
-          </Route>
-          {
-            utilities.map(utility => {
-              return (
-                <Route exact path={`${utility.url}`} key={`${utility.id}`}>{utility.routePath}</Route>
-              )
-            })
-          }
-        </IonRouterOutlet>
-        {/*
-          <Route exact path="/fun-money/">
-            <FunMoney />
-          </Route>
-          <Route exact path="/pill-counter/">
-            <PillCounter />
-          </Route>
-        */}
-
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="physical" href="/physical">
-            <IonIcon aria-hidden="true" icon={heart} />
-            <IonLabel>Physical</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="financial" href="/financial/">
-            <IonIcon aria-hidden="true" icon={cash} />
-            <IonLabel>Financial</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/health">
+              <HealthUtilities /> 
+            </Route>
+            <Route exact path="/financial">
+            <FinancialUtilities />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/financial/" />
+            </Route>
+            {
+              utilities.map(utility => {
+                return (
+                  <Route exact path={`${utility.url}`} key={`${utility.id}`}>{utility.routePath}</Route>
+                )
+              })
+            }
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="health" href="/health">
+              <IonIcon aria-hidden="true" icon={heart} />
+              <IonLabel>Health</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="financial" href="/financial/">
+              <IonIcon aria-hidden="true" icon={cash} />
+              <IonLabel>Financial</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+)
 
 export default App;
