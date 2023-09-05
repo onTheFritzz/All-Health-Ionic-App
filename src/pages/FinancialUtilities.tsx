@@ -12,11 +12,6 @@ const FinancialUtilities: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Financial Utilities</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <IonList>
             {utilities.map((utility) => 
                 <IonItem detail={true} button key={utility.id} routerLink={`${utility.url}`}>
